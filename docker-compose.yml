@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - ./.data/mongodb:/data/db
+  api:
+    image: "node:18.3.0"
+    depends_on: ["mongodb"]
+    working_dir: /app/api
+    command: bash -c "npm i && npm run start"
+    volumes:
+      - ./api:/app/api
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    ports: ["8080:8080"]
+  web:
+    image: "node:18.3.0"
+    depends_on: ["api"]
+    working_dir: /app/web
+    command: bash -c "npm i && npm run dev"
+    volumes:
+      - "./web:/app/web"
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    expose: ["3000"]
+    ports: ["3000:3000"]
