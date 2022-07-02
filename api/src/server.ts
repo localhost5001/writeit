@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 
-import { connectDb } from 'db/index.js'
+import { connectDb } from 'db.js'
 import { appConfig } from 'appConfig.js'
 
 await connectDb()
