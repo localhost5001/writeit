@@ -14,6 +14,6 @@ app.get('/', (req, res) => {
   res.send('Hello, world')
 })
 
-app.listen(8080, () => {
+app.listen(appConfig.appPort, () => {
   console.log(`API is listening at http://localhost:${appConfig.appPort}`)
 })

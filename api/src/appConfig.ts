@@ -3,5 +3,5 @@ export const appConfig = {
   mongoPwd: process.env.MONGO_INITDB_ROOT_PASSWORD,
   mongoHost: process.env.MONGO_HOST,
   mongoPort: process.env.MONGO_PORT,
-  appPort: process.env.APP_PORT
+  appPort: parseInt(process.env.APP_PORT)
 }
