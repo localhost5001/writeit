@@ -4,6 +4,7 @@ declare namespace NodeJS {
     MONGO_INITDB_ROOT_PASSWORD: string
     MONGO_HOST: string
     MONGO_PORT: string
+    MONGO_DB_NAME: string
     APP_PORT: string
     NODE_ENV: string
   }
