@@ -5,6 +5,7 @@
 ### Main dependencies
 
 - nodejs
+- [tsx](https://github.com/esbuild-kit/tsx) - [much faster](https://esbuild.github.io/faq/#benchmark-details) alternative to [ts-node](https://typestrong.org/ts-node/)
 - mongodb
 - vuejs
 - typescript
