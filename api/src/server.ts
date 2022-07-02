@@ -3,6 +3,7 @@ import cors from 'cors'
 
 import { connectDb } from 'db.js'
 import { appConfig } from 'appConfig.js'
+import { registerAppRoutes } from 'routes/index.js'
 
 await connectDb()
 
@@ -13,6 +14,8 @@ app.use(cors())
 app.get('/', (req, res) => {
   res.send('Hello, world')
 })
+
+registerAppRoutes(app)
 
 app.listen(appConfig.appPort, () => {
   console.log(`API is listening at http://localhost:${appConfig.appPort}`)
