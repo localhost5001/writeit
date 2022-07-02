@@ -7,7 +7,7 @@
 - typescript
 
 #### **Api**
-- nodejs
+- nodejs ([ECMAScript modules](https://nodejs.org/api/esm.html) by default)
 - [tsx](https://github.com/esbuild-kit/tsx) - [much faster](https://esbuild.github.io/faq/#benchmark-details) alternative to [ts-node](https://typestrong.org/ts-node/)
 - mongodb
 - express
