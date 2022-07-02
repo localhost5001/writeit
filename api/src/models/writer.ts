@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose from 'mongoose'
 
 export interface Writer {
   name: string
@@ -8,7 +8,7 @@ export interface Writer {
   updatedAt: Date
 }
 
-export const WriterSchema = new Schema<Writer>({
+export const WriterSchema = new mongoose.Schema<Writer>({
   name: { type: String, required: true },
   summary: { type: String, required: true },
   active: { type: Boolean, required: true, default: true }
