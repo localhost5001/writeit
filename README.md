@@ -2,14 +2,23 @@
 
 ## Project specification
 
-### Main dependencies
+#### ****Primary language****
 
+- typescript
+
+#### **Api**
 - nodejs
 - [tsx](https://github.com/esbuild-kit/tsx) - [much faster](https://esbuild.github.io/faq/#benchmark-details) alternative to [ts-node](https://typestrong.org/ts-node/)
 - mongodb
-- vuejs
-- typescript
 - express
+
+#### **Web**
+
+- [vue](https://vuejs.org/)
+- [vue-router](https://router.vuejs.org/)
+- [vite](https://vitejs.dev/)
+- [pinia](https://pinia.vuejs.org/) (state management)
+- [tailwindcss](https://tailwindcss.com/) + [daisyui](https://daisyui.com/) styling and basic components
 
 ## Running the project
 **Requires docker**
