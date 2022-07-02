@@ -5,5 +5,6 @@ declare namespace NodeJS {
     MONGO_HOST: string
     MONGO_PORT: string
     APP_PORT: string
+    NODE_ENV: string
   }
 }
