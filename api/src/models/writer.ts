@@ -1,9 +1,12 @@
 import mongoose from 'mongoose'
 
-export interface Writer {
+export interface WriterPayload {
   name: string
   summary: string
   active: boolean
+}
+
+export interface Writer extends WriterPayload {
   createdAt: Date
   updatedAt: Date
 }
