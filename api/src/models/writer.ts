@@ -9,7 +9,7 @@ export interface Writer {
 }
 
 export const WriterSchema = new mongoose.Schema<Writer>({
-  name: { type: String, required: true },
+  name: { type: String, required: true, unique: true },
   summary: { type: String, required: true },
   active: { type: Boolean, required: true, default: true }
 }, {
