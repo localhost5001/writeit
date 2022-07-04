@@ -2,7 +2,7 @@ import { ObjectId, WithId } from 'mongodb'
 import { getDb } from 'db/index.js'
 import type { Post, PostContent, PostMeta } from 'models/post.js'
 
-const getPosts = async (startDate: Date, endDate: Date): Promise<WithId<Post>[]> => {
+export const getPosts = async (startDate: Date, endDate: Date): Promise<WithId<Post>[]> => {
   const db = getDb()
   const postCollection = db.collection<Post>('post')
 
@@ -14,7 +14,7 @@ const getPosts = async (startDate: Date, endDate: Date): Promise<WithId<Post>[]>
     .toArray()
 }
 
-const getAuthorPosts = async (startDate: Date, endDate: Date, authorId: string): Promise<WithId<Post>[]> => {
+export const getAuthorPosts = async (startDate: Date, endDate: Date, authorId: string): Promise<WithId<Post>[]> => {
   const db = getDb()
   const postCollection = db.collection<Post>('post')
 
@@ -27,7 +27,7 @@ const getAuthorPosts = async (startDate: Date, endDate: Date, authorId: string):
     .toArray()
 }
 
-const getPostsByKeywords = async (keywords: string[]): Promise<WithId<Post>[]> => {
+export const getPostsByKeywords = async (keywords: string[]): Promise<WithId<Post>[]> => {
   const db = getDb()
   const postCollection = db.collection<Post>('post')
   
@@ -40,7 +40,7 @@ const getPostsByKeywords = async (keywords: string[]): Promise<WithId<Post>[]> =
     .toArray()
 }
 
-const getPostById = async (id: string): Promise<Post | null> => {
+export const getPostById = async (id: string): Promise<WithId<Post> | null> => {
   const db = getDb()
   const postCollection = db.collection<Post>('post')
   const oid = new ObjectId(id)
@@ -49,7 +49,7 @@ const getPostById = async (id: string): Promise<Post | null> => {
     .findOne({ _id: oid })
 }
 
-const createPost = async (payload: Post): Promise<ObjectId> => {
+export const createPost = async (payload: Post): Promise<ObjectId> => {
   const db = getDb()
   const postCollection = db.collection<Post>('post')
 
@@ -59,7 +59,7 @@ const createPost = async (payload: Post): Promise<ObjectId> => {
   return res.insertedId
 }
 
-const updatePostContent = async (id: string, payload: PostContent): Promise<void> =>  {
+export const updatePostContent = async (id: string, payload: PostContent): Promise<void> =>  {
   const db = getDb()
   const postCollection = db.collection<Post>('post')
   const oid = new ObjectId(id)
@@ -70,7 +70,7 @@ const updatePostContent = async (id: string, payload: PostContent): Promise<void
   )
 }
 
-const updatePostMeta = async (id: string, payload: PostMeta): Promise<void> =>  {
+export const updatePostMeta = async (id: string, payload: PostMeta): Promise<void> =>  {
   const db = getDb()
   const postCollection = db.collection<Post>('post')
   const oid = new ObjectId(id)
@@ -81,5 +81,3 @@ const updatePostMeta = async (id: string, payload: PostMeta): Promise<void> =>  
       payload
     )
 }
-
-export { getPosts, getAuthorPosts, getPostById, getPostsByKeywords, updatePostContent, updatePostMeta, createPost }

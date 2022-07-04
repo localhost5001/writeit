@@ -4,14 +4,14 @@ import type { WithId } from 'mongodb'
 import { getDb } from 'db/index.js'
 import { Writer, WriterCollectionName } from 'models/writer.js'
 
-const getWriterByName = async (name: string): Promise<WithId<Writer> | null> => {  
+export const getWriterByName = async (name: string): Promise<WithId<Writer> | null> => {  
   const db = getDb()
   const writerCollection = db.collection<Writer>(WriterCollectionName)
   return await writerCollection
     .findOne({ name: name })
 }
 
-const getWriterById = async (id: string): Promise<WithId<Writer> | null> => {
+export const getWriterById = async (id: string): Promise<WithId<Writer> | null> => {
   const db = getDb()
   const writerCollection = db.collection<Writer>(WriterCollectionName)
 
@@ -20,7 +20,7 @@ const getWriterById = async (id: string): Promise<WithId<Writer> | null> => {
     .findOne({ _id: oid })
 }
 
-const createWriter = async (payload: Writer): Promise<ObjectId> => {
+export const createWriter = async (payload: Writer): Promise<ObjectId> => {
   const db = getDb()
   const writerCollection = db.collection<Writer>(WriterCollectionName)
   
@@ -28,7 +28,7 @@ const createWriter = async (payload: Writer): Promise<ObjectId> => {
   return res.insertedId
 }
 
-const updateWriter = async (id: string, payload: Partial<Writer>): Promise<void> => {
+export const updateWriter = async (id: string, payload: Partial<Writer>): Promise<void> => {
   const db = getDb()
   const writerCollection = db.collection<Writer>(WriterCollectionName)
   
@@ -39,5 +39,3 @@ const updateWriter = async (id: string, payload: Partial<Writer>): Promise<void>
       { $set: payload }
     )
 }
-
-export { getWriterByName, getWriterById, createWriter, updateWriter }

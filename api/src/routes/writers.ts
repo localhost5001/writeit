@@ -1,6 +1,5 @@
 import { Router } from 'express'
-
-import * as writerRepo from 'repositories/writersRepository.js'
+import { writersRepository } from 'repositories/index.js'
 
 const writersRouter = Router()
 
