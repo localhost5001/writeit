@@ -1,22 +1,13 @@
-import mongoose from 'mongoose'
-
-export interface WriterPayload {
+interface Writer {
   name: string
   summary: string
   active: boolean
-}
-
-export interface Writer extends WriterPayload {
   createdAt: Date
   updatedAt: Date
 }
 
-export const WriterSchema = new mongoose.Schema<Writer>({
-  name: { type: String, required: true, unique: true },
-  summary: { type: String, required: true },
-  active: { type: Boolean, required: true, default: true }
-}, {
-  timestamps: true
-})
+const WriterCollectionName = 'writer'
 
-export const WriterModel = mongoose.model('writer', WriterSchema)
+export type { Writer }
+
+export { WriterCollectionName }

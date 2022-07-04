@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 
-import { connectDb } from 'db.js'
+import { connectDb } from 'db/index.js'
 import { appConfig } from 'appConfig.js'
 import { registerAppRoutes } from 'routes/index.js'
 

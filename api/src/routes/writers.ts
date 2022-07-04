@@ -1,8 +1,10 @@
 import { Router } from 'express'
 
+import * as writerRepo from 'repositories/writersRepository.js'
+
 const writersRouter = Router()
 
-writersRouter.get('/', (req, res) => {
+writersRouter.get('/', async (req, res) => {
   res.json({ text: 'writers' })
 })
 

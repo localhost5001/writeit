@@ -1,31 +1,14 @@
-import mongoose from 'mongoose'
+import type { ObjectId } from 'mongodb'
 
-export interface PostPayload {
+export interface Post {
   content: string
   postedAt?: Date
-  author_id: mongoose.Schema.Types.ObjectId
+  writer_id: ObjectId
   keywords: string[]
-}
-
-export type PostMeta = Pick<PostPayload, 'keywords' | 'postedAt'>
-
-export type PostContent = Pick<PostPayload, 'content'>
-
-export interface Post extends PostPayload {
   createdAt: Date
   updatedAt: Date
 }
 
-export const PostSchema = new mongoose.Schema<Post>({
-    content: { String, required: true },
-    postedAt: { Date, required: false },
-    author_id: { type: mongoose.Schema.Types.ObjectId, ref: 'writer', required: true },
-    keywords: { type: [{type: String, index: true}], required: true, default: [] }
-  }, {
-    timestamps: true
-  }
-)
+export type PostMeta = Pick<Post, 'keywords' | 'postedAt'>
 
-PostSchema.index({ postedAt: 1, author_id: 1 }, { partialFilterExpression: { postedAt: { $exists: true } } })
-
-export const PostModel = mongoose.model('post', PostSchema)
+export type PostContent = Pick<Post, 'content'>

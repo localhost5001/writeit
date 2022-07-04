@@ -20,10 +20,17 @@
 - [pinia](https://pinia.vuejs.org/) (state management)
 - [tailwindcss](https://tailwindcss.com/) + [daisyui](https://daisyui.com/) styling and basic components
 
+
 ## Running the project
 **Requires docker**
 ```
 docker-compose up
+```
+
+## Setting up mongodb indexes
+
+```
+docker-compose exec mongodb mongo migration/initMongo.js
 ```
 
 ## Installing dependencies
